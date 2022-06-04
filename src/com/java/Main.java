@@ -8,9 +8,9 @@ public class Main {
         MyHashMap myHashMap = new MyHashMap();
         MyLinkedList myLinkedList = new MyLinkedList();
         MyQueue myQueue = new MyQueue();
-        MyStack myStack = new MyStack();
+        MyStack myStack = new MyStack(10);
 
-        //-------------------------------
+        //---MyArrayList----------------------------
         System.out.println("myArrayList.size() = " + myArrayList.size());
         myArrayList.add("1");
         myArrayList.add("2");
@@ -39,6 +39,9 @@ public class Main {
         System.out.println("myArrayList.size() = " + myArrayList.size());
         myArrayList.clear();
         System.out.println("myArrayList.size() = " + myArrayList.size());
-        //-------------------------------
+
+        //---MyStack----------------------------
+
+
     }
 }

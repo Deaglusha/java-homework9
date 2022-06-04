@@ -48,6 +48,9 @@ public class MyArrayList {
         return array[index];
     }
 
+
+
+    //
     private void resize(int newLength) {
         String[] newArray = new String[newLength];
         System.arraycopy(array, 0, newArray, 0, size);
