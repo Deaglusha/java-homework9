@@ -17,8 +17,10 @@ public class MyArrayList {
     private int size = 0;
 
     public void add(String value) {
-        if (size == array.length - 1)
+        if (size == array.length - 1) {
             resize(array.length * 2);
+        }
+
         array[size++] = value;
     }
 

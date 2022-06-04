@@ -1,7 +1,6 @@
 package com.java;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,6 +10,7 @@ public class Main {
         MyQueue myQueue = new MyQueue();
         MyStack myStack = new MyStack();
 
+        //-------------------------------
         System.out.println("myArrayList.size() = " + myArrayList.size());
         myArrayList.add("1");
         myArrayList.add("2");
@@ -39,7 +39,6 @@ public class Main {
         System.out.println("myArrayList.size() = " + myArrayList.size());
         myArrayList.clear();
         System.out.println("myArrayList.size() = " + myArrayList.size());
-
-
+        //-------------------------------
     }
 }
