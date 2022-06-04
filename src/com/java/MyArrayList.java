@@ -16,10 +16,6 @@ public class MyArrayList {
     private String[] array = new String[CAPACITY];
     private int size = 0;
 
-    public static void main(String[] args) {
-
-    }
-
     public void add(String value) {
         if (size == array.length - 1)
             resize(array.length * 2);
@@ -39,6 +35,7 @@ public class MyArrayList {
 
     public void clear() {
         array = new String[0];
+        size = 0;
     }
 
     public int size() {

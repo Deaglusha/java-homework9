@@ -12,5 +12,5 @@ package com.java;
         get(Object key) возвращает значение(Object value) по ключу*/
 
 public class MyHashMap {
-    
+
 }
