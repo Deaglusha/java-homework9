@@ -48,7 +48,7 @@ public class MyArrayList {
             resize(array.length / 2);
         }
 
-        System.out.println("Элемент: " + array[index] + ", под индексом: " + index + " - успешно удалён!");
+        System.out.println("Элемент: " + array[index] + " | Индекс: " + index + " - успешно удалён!");
     }
 
     // Очищает коллекцию.
@@ -61,7 +61,7 @@ public class MyArrayList {
     // Возвращает размер коллекции.
     public String size() {
         if (isEmpty()) {
-            return "Ошибка! Коллекция пустая!";
+            return "Коллекция пустая!";
         }
 
         return "Размер коллекции: " + size;
@@ -75,7 +75,7 @@ public class MyArrayList {
             return "Ошибка! Индекс элемента больше размера!";
         }
 
-        return "Индекс: " + index + " | Элемент: " + array[index];
+        return "Элемент: " + array[index] + " | Индекс: " + index;
     }
 
     /*----- Дополнительные методы -----*/

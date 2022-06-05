@@ -11,7 +11,7 @@ public class Main {
         MyStack myStack = new MyStack();
 
         //---MyArrayList----------------------------
-        /*System.out.println("myArrayList.size() = " + myArrayList.size());
+        System.out.println(myArrayList.size());
         myArrayList.add("1");
         myArrayList.add("2");
         myArrayList.add("521");
@@ -32,14 +32,14 @@ public class Main {
         myArrayList.add("521");
         myArrayList.add("sag");
         myArrayList.add("gdss");
-        System.out.println("myArrayList.size() = " + myArrayList.size());
-        System.out.println("myArrayList.get(5) = " + myArrayList.get(5));
+        System.out.println(myArrayList.size());
+        System.out.println(myArrayList.get(5));
         myArrayList.remove(5);
-        System.out.println("myArrayList.get(5) = " + myArrayList.get(5));
-        System.out.println("myArrayList.size() = " + myArrayList.size());
+        System.out.println(myArrayList.get(5));
+        System.out.println(myArrayList.size());
         myArrayList.clear();
-        System.out.println("myArrayList.size() = " + myArrayList.size());
-        myArrayList.add("521");*/
+        System.out.println(myArrayList.size());
+        myArrayList.add("521");
 
         //---MyStack----------------------------
 
