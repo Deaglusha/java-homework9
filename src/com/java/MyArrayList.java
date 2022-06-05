@@ -53,7 +53,7 @@ public class MyArrayList {
 
     // Очищает коллекцию.
     public void clear() {
-        array = new String[0];
+        array = new String[CAPACITY];
         size = 0;
         System.out.println("Коллекция успешно очищена!");
     }
