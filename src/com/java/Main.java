@@ -79,7 +79,31 @@ public class Main {
         System.out.println(myStack.peek());
 
         //---MyQueue---
+        /*Методы
+        add(Object value) добавляет элемент в конец
+        remove(int index) удаляет элемент под индексом
+        clear() очищает коллекцию
+        size() возвращает размер коллекции
+        peek() возвращает первый элемент в очереди (FIFO)
+        poll() возвращает первый элемент в очереди и удаляет его из коллекции*/
 
+
+        //---MyHashMap---
+        /*Методы
+        put(Object key, Object value) добавляет пару ключ + значение
+        remove(Object key) удаляет пару по ключу
+        clear() очищает коллекцию
+        size() возвращает размер коллекции
+        get(Object key) возвращает значение(Object value) по ключу*/
+
+
+        //---MyLinkedList---
+        /*Методы
+        add(Object value) добавляет элемент в конец
+        remove(int index) удаляет элемент под индексом
+        clear() очищает коллекцию
+        size() возвращает размер коллекции
+        get(int index) возвращает элемент под индексом*/
 
     }
 }
