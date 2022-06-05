@@ -7,11 +7,11 @@ public class Main {
         MyArrayList myArrayList = new MyArrayList();
         MyHashMap myHashMap = new MyHashMap();
         MyLinkedList myLinkedList = new MyLinkedList();
-        MyQueue myQueue = new MyQueue();
+        MyQueue myQueue = new MyQueue(10);
         MyStack myStack = new MyStack(10);
 
         //---MyArrayList----------------------------
-        System.out.println("myArrayList.size() = " + myArrayList.size());
+        /*System.out.println("myArrayList.size() = " + myArrayList.size());
         myArrayList.add("1");
         myArrayList.add("2");
         myArrayList.add("521");
@@ -39,6 +39,7 @@ public class Main {
         System.out.println("myArrayList.size() = " + myArrayList.size());
         myArrayList.clear();
         System.out.println("myArrayList.size() = " + myArrayList.size());
+        myArrayList.add("521");*/
 
         //---MyStack----------------------------
 
