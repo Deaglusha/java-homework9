@@ -15,58 +15,63 @@ package com.java;
 public class MyStack {
     private final int CAPACITY = 16;
     private String[] array = new String[CAPACITY];
-    private int top = -1;
+    private int size = 0;
 
     // Добавляет элемент в конец.
     public void push(String value) {
         // Если количество элементов достигло размера массива - увеличиваем его в 2 раза.
-        if (top == array.length - 1) {
+        if (size == array.length - 1) {
             resize(array.length * 2);
         }
 
-        System.out.println("Элемент: " + value + " - успешно добавлен!");
-        array[++top] = value;
+        System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
+        array[size++] = value;
     }
 
     // Удаляет элемент под индексом.
     public void remove(int index) {
         if (isEmpty()) {
-            System.out.println("Ошибка! Коллекция пустая!");
-            System.exit(1);
-        } else if (index >= top) {
+            System.out.println("Ошибка! Стек пустой!");
+            return;
+        } else if (index >= size) {
             System.out.println("Ошибка! Элемента под индексом: " + index + " - не существует!");
-            System.exit(1);
-        }
-
-        for (int i = index; i < top; i++) {
-            array[i] = array[i + 1];
-        }
-
-        array[top] = null;
-        top--;
-
-        // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
-        if (array.length > CAPACITY && top < array.length / 4) {
-            resize(array.length / 2);
+            return;
         }
 
         System.out.println("Элемент: " + array[index] + ", под индексом: " + index + " - успешно удалён!");
+
+        for (int i = index; i < size; i++) {
+            array[i] = array[i + 1];
+        }
+
+        array[size] = null;
+        size--;
+
+        // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
+        if (array.length > CAPACITY && size < array.length / 4) {
+            resize(array.length / 2);
+        }
     }
 
     // Очищает стек.
     public void clear() {
-        array = new String[0];
-        top = -1;
+        if (isEmpty()) {
+            System.out.println("Стек итак пустой!");
+            return;
+        }
+
+        array = new String[CAPACITY];
+        size = 0;
         System.out.println("Стек успешно очищен!");
     }
 
     // Возвращает размер стека.
     public String size() {
         if (isEmpty()) {
-            return "Ошибка! Стек пустой!";
+            return "Стек пустой!";
         }
 
-        return "Размер стека: " + top + 1;
+        return "Размер стека: " + size;
     }
 
     // Возвращает первый элемент в стеке (LIFO).
@@ -75,7 +80,7 @@ public class MyStack {
             return "Ошибка! Стек пустой!";
         }
 
-        return "Первый элемент в стеке: " + array[top];
+        return "Первый элемент в стеке: " + array[size - 1];
     }
 
     // Возвращает первый элемент в стеке и удаляет его из коллекции.
@@ -84,31 +89,28 @@ public class MyStack {
             return "Ошибка! Стек пустой!";
         }
 
-        for (int i = 0; i < top; i++) {
-            array[i] = array[i + 1];
-        }
-
-        array[top] = null;
-        top--;
+        String result = array[size - 1];
+        array[size - 1] = null;
+        size--;
 
         // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
-        if (array.length > CAPACITY && top < array.length / 4) {
+        if (array.length > CAPACITY && size < array.length / 4) {
             resize(array.length / 2);
         }
 
-        return "Первый элемент в стеке: " + array[top] + " - успешно удалён!";
+        return "Первый элемент в стеке: " + result + " - успешно удалён!";
     }
 
     /*----- Дополнительные методы -----*/
     // Проверяем, пустой ли стек.
     public Boolean isEmpty() {
-        return top == -1;
+        return size == 0;
     }
 
     // Увеличиваем или уменьшаем (для экономии памяти) размер массива.
     private void resize(int newLength) {
         String[] newArray = new String[newLength];
-        System.arraycopy(array, 0, newArray, 0, top);
+        System.arraycopy(array, 0, newArray, 0, size);
         array = newArray;
     }
 }

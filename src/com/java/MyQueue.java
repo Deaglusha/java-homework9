@@ -31,12 +31,14 @@ public class MyQueue {
     // Удаляет элемент под индексом.
     public void remove(int index) {
         if (isEmpty()) {
-            System.out.println("Ошибка! Коллекция пустая!");
-            System.exit(1);
+            System.out.println("Ошибка! Очередь пустая!");
+            return;
         } else if (index >= top) {
             System.out.println("Ошибка! Элемента под индексом: " + index + " - не существует!");
-            System.exit(1);
+            return;
         }
+
+        System.out.println("Элемент: " + array[index] + ", под индексом: " + index + " - успешно удалён!");
 
         for (int i = index; i < top; i++) {
             array[i] = array[i + 1];
@@ -49,39 +51,37 @@ public class MyQueue {
         if (array.length > CAPACITY && top < array.length / 4) {
             resize(array.length / 2);
         }
-
-        System.out.println("Элемент: " + array[index] + ", под индексом: " + index + " - успешно удалён!");
     }
 
-    // Очищает стек.
+    // Очищает очередь.
     public void clear() {
-        array = new String[0];
+        array = new String[CAPACITY];
         top = -1;
-        System.out.println("Стек успешно очищен!");
+        System.out.println("Очередь успешно очищена!");
     }
 
-    // Возвращает размер стека.
+    // Возвращает размер очереди.
     public String size() {
         if (isEmpty()) {
-            return "Ошибка! Стек пустой!";
+            return "Очередь пустая!";
         }
 
-        return "Размер стека: " + top + 1;
+        return "Размер очереди: " + top + 1;
     }
 
-    // Возвращает первый элемент в стеке (LIFO).
+    // Возвращает первый элемент в очереди (FIFO).
     public String peek() {
         if (isEmpty()) {
-            return "Ошибка! Стек пустой!";
+            return "Ошибка! Очередь пустая!";
         }
 
-        return "Первый элемент в стеке: " + array[0];
+        return "Первый элемент в очереди: " + array[0];
     }
 
-    // Возвращает первый элемент в стеке и удаляет его из коллекции.
+    // Возвращает первый элемент в очереди и удаляет его из коллекции.
     public String pop() {
         if (isEmpty()) {
-            return "Ошибка! Стек пустой!";
+            return "Ошибка! Очередь пустая!";
         }
 
         for (int i = 0; i < top; i++) {
@@ -96,11 +96,11 @@ public class MyQueue {
             resize(array.length / 2);
         }
 
-        return "Первый элемент в стеке: " + array[0] + " - успешно удалён!";
+        return "Первый элемент в очереди: " + array[0] + " - успешно удалён!";
     }
 
     /*----- Дополнительные методы -----*/
-    // Проверяем, пустой ли стек.
+    // Проверяем, пустая ли очередь.
     public Boolean isEmpty() {
         return top == -1;
     }

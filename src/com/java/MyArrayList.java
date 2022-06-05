@@ -22,19 +22,21 @@ public class MyArrayList {
             resize(array.length * 2);
         }
 
+        System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
         array[size++] = value;
-        System.out.println("Элемент: " + value + " - успешно добавлен!");
     }
 
     // Удаляет элемент под индексом.
     public void remove(int index) {
         if (isEmpty()) {
             System.out.println("Ошибка! Коллекция пустая!");
-            System.exit(1);
+            return;
         } else if (index >= size) {
             System.out.println("Ошибка! Элемента под индексом: " + index + " - не существует!");
-            System.exit(1);
+            return;
         }
+
+        System.out.println("Элемент: " + array[index] + " | Индекс: " + index + " - успешно удалён!");
 
         for (int i = index; i < size; i++) {
             array[i] = array[i + 1];
@@ -47,12 +49,15 @@ public class MyArrayList {
         if (array.length > CAPACITY && size < array.length / 4) {
             resize(array.length / 2);
         }
-
-        System.out.println("Элемент: " + array[index] + " | Индекс: " + index + " - успешно удалён!");
     }
 
     // Очищает коллекцию.
     public void clear() {
+        if (isEmpty()) {
+            System.out.println("Коллекция итак пустая!");
+            return;
+        }
+
         array = new String[CAPACITY];
         size = 0;
         System.out.println("Коллекция успешно очищена!");
