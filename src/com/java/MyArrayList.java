@@ -23,7 +23,8 @@ public class MyArrayList {
         }
 
         System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
-        array[size++] = value;
+        array[size] = value;
+        size++;
     }
 
     // Удаляет элемент под индексом.
@@ -42,7 +43,7 @@ public class MyArrayList {
             array[i] = array[i + 1];
         }
 
-        array[size] = null;
+        array[size - 1] = null;
         size--;
 
         // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
