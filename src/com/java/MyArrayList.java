@@ -31,7 +31,7 @@ public class MyArrayList {
         if (isEmpty()) {
             System.out.println("Ошибка! Коллекция пустая!");
             System.exit(1);
-        } else if (index > size) {
+        } else if (index >= size) {
             System.out.println("Ошибка! Элемента под индексом: " + index + " - не существует!");
             System.exit(1);
         }
@@ -71,7 +71,7 @@ public class MyArrayList {
     public String get(int index) {
         if (isEmpty()) {
             return "Ошибка! Коллекция пустая!";
-        } else if (index > size) {
+        } else if (index >= size) {
             return "Ошибка! Индекс элемента больше размера!";
         }
 
