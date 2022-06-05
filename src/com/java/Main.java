@@ -8,7 +8,7 @@ public class Main {
         MyHashMap myHashMap = new MyHashMap();
         MyLinkedList myLinkedList = new MyLinkedList();
         MyQueue myQueue = new MyQueue(10);
-        MyStack myStack = new MyStack(10);
+        MyStack myStack = new MyStack();
 
         //---MyArrayList----------------------------
         /*System.out.println("myArrayList.size() = " + myArrayList.size());
