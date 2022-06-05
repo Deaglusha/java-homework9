@@ -7,7 +7,7 @@ public class Main {
         MyArrayList myArrayList = new MyArrayList();
         MyHashMap myHashMap = new MyHashMap();
         MyLinkedList myLinkedList = new MyLinkedList();
-        MyQueue myQueue = new MyQueue(10);
+        MyQueue myQueue = new MyQueue();
         MyStack myStack = new MyStack();
 
         //---MyArrayList----------------------------

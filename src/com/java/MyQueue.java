@@ -13,80 +13,102 @@ package com.java;
         poll() возвращает первый элемент в очереди и удаляет его из коллекции*/
 
 public class MyQueue {
-    private long[] array;
-    private int size;// Размер массива
-    private int nIteams;// Фактический объем хранилища: записываем, сколько значений в очереди, удаляем - добавляем ++
-    private int front;// Заголовок: в основном записывается при удалении, где же удаление
-    private int rear;// Конец: в основном записывать, когда он добавляется, где он добавляется
+    private final int CAPACITY = 16;
+    private String[] array = new String[CAPACITY];
+    private int top = -1;
 
-    public MyQueue(int maxSize) {
-        this.size = maxSize;
-        array = new long[size];
-        front = 0;
-        nIteams = 0;
-        rear = -1;
-    }
-
-    //добавить одну
-    public void add(long value) {
-        if (isFull()) {
-            System.out.println("Очередь заполнена");
-            return;
+    // Добавляет элемент в конец.
+    public void add(String value) {
+        // Если количество элементов достигло размера массива - увеличиваем его в 2 раза.
+        if (top == array.length - 1) {
+            resize(array.length * 2);
         }
-        rear = ++rear % size;//
-        array[rear] = value;// Когда хвостовой указатель заполнен, он возвращается к нулю. Это предложение эквивалентно следующему содержанию комментария
-        nIteams++;
+
+        System.out.println("Элемент: " + value + " - успешно добавлен!");
+        array[++top] = value;
     }
 
-    // Удаляем один
-    public long remove() {
+    // Удаляет элемент под индексом.
+    public void remove(int index) {
         if (isEmpty()) {
-            System.out.println("Очередь пуста");
-            return 0;
+            System.out.println("Ошибка! Коллекция пустая!");
+            System.exit(1);
+        } else if (index >= top) {
+            System.out.println("Ошибка! Элемента под индексом: " + index + " - не существует!");
+            System.exit(1);
         }
-        nIteams--;
-        front = front % size;
-        return array[front++];// Если вы выйдете на голову, уменьшите ее и прибавьте 1 к голове
+
+        for (int i = index; i < top; i++) {
+            array[i] = array[i + 1];
+        }
+
+        array[top] = null;
+        top--;
+
+        // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
+        if (array.length > CAPACITY && top < array.length / 4) {
+            resize(array.length / 2);
+        }
+
+        System.out.println("Элемент: " + array[index] + ", под индексом: " + index + " - успешно удалён!");
     }
 
-    // Просмотр первого
-    public long peek() {
+    // Очищает стек.
+    public void clear() {
+        array = new String[0];
+        top = -1;
+        System.out.println("Стек успешно очищен!");
+    }
+
+    // Возвращает размер стека.
+    public String size() {
         if (isEmpty()) {
-            System.out.println("Очередь пуста");
-            return 0;
+            return "Ошибка! Стек пустой!";
         }
-        return array[front];
+
+        return "Размер стека: " + top + 1;
     }
 
-    public void display() {
-        /*if(isEmpty()){
-                         System.out.println («Очередь пуста»);
-            return;
-        }*/
-        System.out.print("[");
-        int item = front;
-        for (int i = 0; i < nIteams; i++) {
-            System.out.print(array[item++ % size]);
-            if (i != nIteams - 1) {
-                System.out.print(",");
-            }
+    // Возвращает первый элемент в стеке (LIFO).
+    public String peek() {
+        if (isEmpty()) {
+            return "Ошибка! Стек пустой!";
         }
-        System.out.println("]");
+
+        return "Первый элемент в стеке: " + array[0];
     }
 
+    // Возвращает первый элемент в стеке и удаляет его из коллекции.
+    public String pop() {
+        if (isEmpty()) {
+            return "Ошибка! Стек пустой!";
+        }
 
-    // Полон ли он?
-    public boolean isFull() {
-        return (nIteams == size);
+        for (int i = 0; i < top; i++) {
+            array[i] = array[i + 1];
+        }
+
+        array[top] = null;
+        top--;
+
+        // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
+        if (array.length > CAPACITY && top < array.length / 4) {
+            resize(array.length / 2);
+        }
+
+        return "Первый элемент в стеке: " + array[0] + " - успешно удалён!";
     }
 
-    // Пусто
-    public boolean isEmpty() {
-        return (nIteams == 0);
+    /*----- Дополнительные методы -----*/
+    // Проверяем, пустой ли стек.
+    public Boolean isEmpty() {
+        return top == -1;
     }
 
-    // Размер очереди
-    public int size() {
-        return nIteams;
+    // Увеличиваем или уменьшаем (для экономии памяти) размер массива.
+    private void resize(int newLength) {
+        String[] newArray = new String[newLength];
+        System.arraycopy(array, 0, newArray, 0, top);
+        array = newArray;
     }
 }
