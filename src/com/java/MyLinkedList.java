@@ -18,7 +18,6 @@ public class MyLinkedList<E> {
     protected Node end;
     protected int size;
 
-    //Создаем новый обьект MyLinkedList.
     public MyLinkedList() {
         this.head = null;
     }
