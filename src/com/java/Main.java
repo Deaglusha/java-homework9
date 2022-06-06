@@ -20,7 +20,7 @@ public class Main {
 //        System.out.println(myArrayList.size());
 //        myArrayList.clear();
 //        System.out.println(myArrayList.get(1));
-//        myArrayList.add("1");
+//        myArrayList.add(null);
 //        myArrayList.add("2");
 //        myArrayList.add("521");
 //        myArrayList.add("sag");
@@ -58,25 +58,25 @@ public class Main {
         size() возвращает размер коллекции
         peek() возвращает первый элемент в стеке (LIFO)
         pop() возвращает первый элемент в стеке и удаляет его из коллекции*/
-        System.out.println(myStack.size());
-        myStack.clear();
-        System.out.println(myStack.peek());
-        System.out.println(myStack.pop());
-        myStack.remove(5);
-        myStack.push("f");
-        myStack.remove(5);
-        myStack.push("fsd");
-        myStack.push("asf");
-        myStack.push("f213");
-        myStack.push("15");
-        myStack.push("1");
-        myStack.push("f2");
-        System.out.println(myStack.peek());
-        System.out.println(myStack.size());
-        System.out.println(myStack.peek());
-        System.out.println(myStack.pop());
-        System.out.println(myStack.size());
-        System.out.println(myStack.peek());
+//        System.out.println(myStack.size());
+//        myStack.clear();
+//        System.out.println(myStack.peek());
+//        System.out.println(myStack.pop());
+//        myStack.remove(5);
+//        myStack.push("f");
+//        myStack.remove(5);
+//        myStack.push("fsd");
+//        myStack.push("asf");
+//        myStack.push("f213");
+//        myStack.push("15");
+//        myStack.push("1");
+//        myStack.push("f2");
+//        System.out.println(myStack.peek());
+//        System.out.println(myStack.size());
+//        System.out.println(myStack.peek());
+//        System.out.println(myStack.pop());
+//        System.out.println(myStack.size());
+//        System.out.println(myStack.peek());
 
         //---MyQueue---
         /*Методы

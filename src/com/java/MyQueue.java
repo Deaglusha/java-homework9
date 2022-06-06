@@ -24,8 +24,8 @@ public class MyQueue {
             resize(array.length * 2);
         }
 
-        System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
         array[size] = value;
+        System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
         size++;
     }
 

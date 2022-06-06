@@ -22,8 +22,13 @@ public class MyArrayList {
             resize(array.length * 2);
         }
 
-        System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
+        if (value == null) {
+            System.out.println("Ошибка! Обьект не может быть null!");
+            return;
+        }
+
         array[size] = value;
+        System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
         size++;
     }
 
