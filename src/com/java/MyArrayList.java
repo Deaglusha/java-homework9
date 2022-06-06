@@ -44,12 +44,19 @@ public class MyArrayList {
 
         System.out.println("Элемент: " + array[index] + " | Индекс: " + index + " - успешно удалён!");
 
-        for (int i = index; i < size; i++) {
+        if (size - index >= 0) {
+            System.arraycopy(array, index + 1, array, index, size - index);
+        }
+
+        array[--size] = null;
+
+        //Альтернатива
+        /*for (int i = index; i < size; i++) {
             array[i] = array[i + 1];
         }
 
         array[size - 1] = null;
-        size--;
+        size--;*/
 
         // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
         if (array.length > CAPACITY && size < array.length / 4) {
