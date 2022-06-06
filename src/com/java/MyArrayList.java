@@ -4,19 +4,19 @@ package com.java;
         Можно использовать 1 массив для хранения данных.
 
         Методы:
-        add(Object value) добавляет элемент в конец
-        remove(int index) удаляет элемент под индексом
+        +add(Object value) добавляет элемент в конец
+        +remove(int index) удаляет элемент под индексом
         clear() очищает коллекцию
-        size() возвращает размер коллекции
-        get(int index) возвращает элемент под индексом*/
+        +size() возвращает размер коллекции
+        +get(int index) возвращает элемент под индексом*/
 
 public class MyArrayList {
     private final int CAPACITY = 16;
-    private String[] array = new String[CAPACITY];
+    private Object[] array = new Object[CAPACITY];
     private int size = 0;
 
     // Добавляет элемент в конец.
-    public void add(String value) {
+    public void add(Object value) {
         // Если количество элементов достигло размера массива - увеличиваем его в 2 раза.
         if (size == array.length - 1) {
             resize(array.length * 2);
@@ -71,7 +71,7 @@ public class MyArrayList {
             return;
         }
 
-        array = new String[CAPACITY];
+        array = new Object[CAPACITY];
         size = 0;
         System.out.println("Коллекция успешно очищена!");
     }
@@ -86,7 +86,7 @@ public class MyArrayList {
     }
 
     // Возвращает элемент под индексом.
-    public String get(int index) {
+    public Object get(int index) {
         if (isEmpty()) {
             return "Ошибка! Коллекция пустая!";
         } else if (index >= size) {
@@ -104,7 +104,7 @@ public class MyArrayList {
 
     // Увеличиваем или уменьшаем (для экономии памяти) размер массива.
     private void resize(int newLength) {
-        String[] newArray = new String[newLength];
+        Object[] newArray = new Object[newLength];
         System.arraycopy(array, 0, newArray, 0, size);
         array = newArray;
     }
