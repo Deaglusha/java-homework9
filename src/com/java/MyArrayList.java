@@ -16,84 +16,60 @@ public class MyArrayList {
     private int size = 0;
 
     // Добавляет элемент в конец.
-    public void add(Object value) {
+    public boolean add(Object value) {
         // Если количество элементов достигло размера массива - увеличиваем его в 2 раза.
         if (size == array.length - 1) {
             resize(array.length * 2);
         }
-
         if (value == null) {
-            System.out.println("Ошибка! Обьект не может быть null!");
-            return;
+            return false;
         }
 
         array[size] = value;
-        System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
         size++;
+
+        return true;
     }
 
     // Удаляет элемент под индексом.
-    public void remove(int index) {
-        if (isEmpty()) {
-            System.out.println("Ошибка! Коллекция пустая!");
-            return;
-        } else if (index >= size) {
-            System.out.println("Ошибка! Элемента под индексом: " + index + " - не существует!");
-            return;
+    public boolean remove(int index) {
+        if (isEmpty() || index >= size) {
+            return false;
         }
-
-        System.out.println("Элемент: " + array[index] + " | Индекс: " + index + " - успешно удалён!");
-
         if (size - index >= 0) {
             System.arraycopy(array, index + 1, array, index, size - index);
         }
 
         array[--size] = null;
 
-        //Альтернатива
-        /*for (int i = index; i < size; i++) {
-            array[i] = array[i + 1];
-        }
-
-        array[size - 1] = null;
-        size--;*/
-
         // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
         if (array.length > CAPACITY && size < array.length / 4) {
             resize(array.length / 2);
         }
+
+        return true;
     }
 
     // Очищает коллекцию.
-    public void clear() {
-        if (isEmpty()) {
-            System.out.println("Коллекция итак пустая!");
-            return;
-        }
-
+    public boolean clear() {
         array = new Object[CAPACITY];
         size = 0;
-        System.out.println("Коллекция успешно очищена!");
+
+        return true;
     }
 
     // Возвращает размер коллекции.
-    public String size() {
-        if (isEmpty()) {
-            return "Коллекция пустая!";
-        }
-
-        return "Размер коллекции: " + size;
+    public int size() {
+        return size;
     }
 
     // Возвращает элемент под индексом.
     public Object get(int index) {
-        if (isEmpty()) {
-            return "Ошибка! Коллекция пустая!";
-        } else if (index >= size) {
-            return "Ошибка! Индекс элемента больше размера!";
+        if (isEmpty() || index >= size) {
+            return false;
         }
 
-        return "Элемент: " + array[index] + " | Индекс: " + index;
+        return array[index];
     }
 
     /*----- Дополнительные методы -----*/

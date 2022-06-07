@@ -18,88 +18,74 @@ public class MyStack {
     private int size = 0;
 
     // Добавляет элемент в конец.
-    public void push(Object value) {
+    public boolean push(Object value) {
         // Если количество элементов достигло размера массива - увеличиваем его в 2 раза.
         if (size == array.length - 1) {
             resize(array.length * 2);
         }
 
-        System.out.println("Элемент: " + value + " - успешно добавлен! Индекс: " + size);
         array[size] = value;
         size++;
+
+        return true;
     }
 
     // Удаляет элемент под индексом.
-    public void remove(int index) {
-        if (isEmpty()) {
-            System.out.println("Ошибка! Стек пустой!");
-            return;
-        } else if (index >= size) {
-            System.out.println("Ошибка! Элемента под индексом: " + index + " - не существует!");
-            return;
+    public boolean remove(int index) {
+        if (isEmpty() || index >= size) {
+            return false;
+        }
+        if (size - index >= 0) {
+            System.arraycopy(array, index + 1, array, index, size - index);
         }
 
-        System.out.println("Элемент: " + array[index] + ", под индексом: " + index + " - успешно удалён!");
-
-        for (int i = index; i < size; i++) {
-            array[i] = array[i + 1];
-        }
-
-        array[size - 1] = null;
-        size--;
+        array[--size] = null;
 
         // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
         if (array.length > CAPACITY && size < array.length / 4) {
             resize(array.length / 2);
         }
+
+        return true;
     }
 
     // Очищает стек.
-    public void clear() {
-        if (isEmpty()) {
-            System.out.println("Стек итак пустой!");
-            return;
-        }
-
+    public boolean clear() {
         array = new Object[CAPACITY];
         size = 0;
-        System.out.println("Стек успешно очищен!");
+
+        return true;
     }
 
     // Возвращает размер стека.
-    public String size() {
-        if (isEmpty()) {
-            return "Стек пустой!";
-        }
-
-        return "Размер стека: " + size;
+    public int size() {
+        return size;
     }
 
     // Возвращает первый элемент в стеке (LIFO).
     public Object peek() {
         if (isEmpty()) {
-            return "Ошибка! Стек пустой!";
+            return false;
         }
 
-        return "Первый элемент в стеке: " + array[size - 1];
+        return array[size - 1];
     }
 
     // Возвращает первый элемент в стеке и удаляет его из коллекции.
     public Object pop() {
         if (isEmpty()) {
-            return "Ошибка! Стек пустой!";
+            return false;
         }
 
         Object result = array[size - 1];
-        array[size - 1] = null;
-        size--;
+        array[--size] = null;
 
         // Если количество элементов стало в 4 раза меньше размера массива - уменьшаем его в 2 раза.
         if (array.length > CAPACITY && size < array.length / 4) {
             resize(array.length / 2);
         }
 
-        return "Первый элемент в стеке: " + result + " - успешно удалён!";
+        return result;
     }
 
     /*----- Дополнительные методы -----*/
