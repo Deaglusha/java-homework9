@@ -14,11 +14,11 @@ package com.java;
 
 public class MyStack {
     private final int CAPACITY = 16;
-    private String[] array = new String[CAPACITY];
+    private Object[] array = new Object[CAPACITY];
     private int size = 0;
 
     // Добавляет элемент в конец.
-    public void push(String value) {
+    public void push(Object value) {
         // Если количество элементов достигло размера массива - увеличиваем его в 2 раза.
         if (size == array.length - 1) {
             resize(array.length * 2);
@@ -61,7 +61,7 @@ public class MyStack {
             return;
         }
 
-        array = new String[CAPACITY];
+        array = new Object[CAPACITY];
         size = 0;
         System.out.println("Стек успешно очищен!");
     }
@@ -76,7 +76,7 @@ public class MyStack {
     }
 
     // Возвращает первый элемент в стеке (LIFO).
-    public String peek() {
+    public Object peek() {
         if (isEmpty()) {
             return "Ошибка! Стек пустой!";
         }
@@ -85,12 +85,12 @@ public class MyStack {
     }
 
     // Возвращает первый элемент в стеке и удаляет его из коллекции.
-    public String pop() {
+    public Object pop() {
         if (isEmpty()) {
             return "Ошибка! Стек пустой!";
         }
 
-        String result = array[size - 1];
+        Object result = array[size - 1];
         array[size - 1] = null;
         size--;
 
@@ -110,7 +110,7 @@ public class MyStack {
 
     // Увеличиваем или уменьшаем (для экономии памяти) размер массива.
     private void resize(int newLength) {
-        String[] newArray = new String[newLength];
+        Object[] newArray = new Object[newLength];
         System.arraycopy(array, 0, newArray, 0, size);
         array = newArray;
     }
